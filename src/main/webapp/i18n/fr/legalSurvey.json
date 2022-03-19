@@ -1,0 +1,26 @@
+{
+  "albatestApp": {
+    "legalSurvey": {
+      "home": {
+        "title": "LegalSurveys",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Legal Survey",
+        "createOrEditLabel": "Créer ou éditer un Legal Survey",
+        "notFound": "Aucun Legal Survey trouvé"
+      },
+      "created": "Un nouveau Legal Survey a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Legal Survey avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Legal Survey avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Legal Survey {{ id }} ?"
+      },
+      "detail": {
+        "title": "Legal Survey"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "issues": "Issues",
+      "attachment": "Attachment"
+    }
+  }
+}

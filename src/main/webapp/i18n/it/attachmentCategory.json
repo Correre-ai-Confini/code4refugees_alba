@@ -1,0 +1,24 @@
+{
+  "albatestApp": {
+    "attachmentCategory": {
+      "home": {
+        "title": "AttachmentCategories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Attachment Category",
+        "createOrEditLabel": "Genera o modifica un Attachment Category",
+        "notFound": "No Attachment Categories found"
+      },
+      "created": "&Egrave; stato generato un nuovo Attachment Category con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Attachment Category identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Attachment Category con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Attachment Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Attachment Category"
+      },
+      "id": "ID",
+      "description": "Description"
+    }
+  }
+}

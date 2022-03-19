@@ -1,0 +1,26 @@
+{
+  "albatestApp": {
+    "medicalSurvey": {
+      "home": {
+        "title": "MedicalSurveys",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Medical Survey",
+        "createOrEditLabel": "Créer ou éditer un Medical Survey",
+        "notFound": "Aucun Medical Survey trouvé"
+      },
+      "created": "Un nouveau Medical Survey a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Medical Survey avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Medical Survey avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Medical Survey {{ id }} ?"
+      },
+      "detail": {
+        "title": "Medical Survey"
+      },
+      "id": "ID",
+      "ongoingIllnesses": "Ongoing Illnesses",
+      "ongoingTreatments": "Ongoing Treatments",
+      "attachment": "Attachment"
+    }
+  }
+}

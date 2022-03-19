@@ -1,0 +1,11 @@
+id;description;creation_ts;name;content_blob;content_blob_content_type;content_type
+1;Savings;2022-03-19T13:54:35;indexing Rustic;../fake-data/blob/hipster.png;image/png;BLOB
+2;Central Squares Team-oriented;2022-03-18T23:53:04;Card;../fake-data/blob/hipster.png;image/png;DATE
+3;primary Pre-emptive Tools;2022-03-18T21:00:36;invoice;../fake-data/blob/hipster.png;image/png;NUMBER
+4;Infrastructure Quality;2022-03-19T14:05:56;Associate;../fake-data/blob/hipster.png;image/png;TIME
+5;withdrawal;2022-03-19T02:16:48;Loaf Car;../fake-data/blob/hipster.png;image/png;CURRENCY
+6;Product;2022-03-19T06:42:54;even-keeled synthesizing;../fake-data/blob/hipster.png;image/png;NUMBER
+7;GB;2022-03-19T15:03:23;payment Concrete;../fake-data/blob/hipster.png;image/png;BLOB
+8;Cotton Liaison;2022-03-19T15:25:05;Mississippi Shoes;../fake-data/blob/hipster.png;image/png;TIME
+9;Account;2022-03-19T05:51:43;Account Reduced;../fake-data/blob/hipster.png;image/png;CURRENCY
+10;Pennsylvania synergy;2022-03-19T10:55:59;Supervisor;../fake-data/blob/hipster.png;image/png;CURRENCY

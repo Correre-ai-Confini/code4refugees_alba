@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-person-heading" data-cy="PersonCreateUpdateHeading" jhiTranslate="albatestApp.person.home.createOrEditLabel">
+        Create or edit a Person
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.personalIdentifier" for="field_personalIdentifier"
+            >Personal Identifier</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="personalIdentifier"
+            id="field_personalIdentifier"
+            data-cy="personalIdentifier"
+            formControlName="personalIdentifier"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.identifierType" for="field_identifierType">Identifier Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="identifierType"
+            id="field_identifierType"
+            data-cy="identifierType"
+            formControlName="identifierType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.firstName" for="field_firstName">First Name</label>
+          <input type="text" class="form-control" name="firstName" id="field_firstName" data-cy="firstName" formControlName="firstName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.lastName" for="field_lastName">Last Name</label>
+          <input type="text" class="form-control" name="lastName" id="field_lastName" data-cy="lastName" formControlName="lastName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.email" for="field_email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.phoneNumber" for="field_phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="phoneNumber"
+            id="field_phoneNumber"
+            data-cy="phoneNumber"
+            formControlName="phoneNumber"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.firstSpokenLanguage" for="field_firstSpokenLanguage"
+            >First Spoken Language</label
+          >
+          <select
+            class="form-control"
+            name="firstSpokenLanguage"
+            formControlName="firstSpokenLanguage"
+            id="field_firstSpokenLanguage"
+            data-cy="firstSpokenLanguage"
+          >
+            <option [ngValue]="null">{{ 'albatestApp.Language.null' | translate }}</option>
+            <option *ngFor="let language of languageValues" [value]="language">{{ 'albatestApp.Language.' + language | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.secondSpokenLanguage" for="field_secondSpokenLanguage"
+            >Second Spoken Language</label
+          >
+          <select
+            class="form-control"
+            name="secondSpokenLanguage"
+            formControlName="secondSpokenLanguage"
+            id="field_secondSpokenLanguage"
+            data-cy="secondSpokenLanguage"
+          >
+            <option [ngValue]="null">{{ 'albatestApp.Language.null' | translate }}</option>
+            <option *ngFor="let language of languageValues" [value]="language">{{ 'albatestApp.Language.' + language | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.person.comingFrom" for="field_comingFrom">Coming From</label>
+          <select class="form-control" id="field_comingFrom" data-cy="comingFrom" name="comingFrom" formControlName="comingFrom">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="locationOption.id === editForm.get('comingFrom')!.value?.id ? editForm.get('comingFrom')!.value : locationOption"
+              *ngFor="let locationOption of comingFromsCollection; trackBy: trackLocationById"
+            >
+              {{ locationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

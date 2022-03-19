@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="legalSurvey">
+      <h2 data-cy="legalSurveyDetailsHeading"><span jhiTranslate="albatestApp.legalSurvey.detail.title">Legal Survey</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ legalSurvey.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.legalSurvey.notes">Notes</span></dt>
+        <dd>
+          <span>{{ legalSurvey.notes }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.legalSurvey.issues">Issues</span></dt>
+        <dd>
+          <span>{{ legalSurvey.issues }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.legalSurvey.attachment">Attachment</span></dt>
+        <dd>
+          <div *ngIf="legalSurvey.attachment">
+            <a [routerLink]="['/attachment', legalSurvey.attachment?.id, 'view']">{{ legalSurvey.attachment?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/legal-survey', legalSurvey.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

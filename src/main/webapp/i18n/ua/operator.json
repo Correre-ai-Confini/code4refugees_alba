@@ -1,0 +1,25 @@
+{
+  "albatestApp": {
+    "operator": {
+      "home": {
+        "title": "Operators",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Operator",
+        "createOrEditLabel": "Створити чи редагувати Operator",
+        "notFound": "No Operators found"
+      },
+      "created": "Новий Operator створений з ідентифікатором {{ param }}",
+      "updated": "Operator оновлений з ідентифікатором {{ param }}",
+      "deleted": "Operator видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Operator {{ id }}?"
+      },
+      "detail": {
+        "title": "Operator"
+      },
+      "id": "ID",
+      "kindOfOperator": "Kind Of Operator",
+      "personalInformation": "Personal Information"
+    }
+  }
+}

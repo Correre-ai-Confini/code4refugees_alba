@@ -1,0 +1,114 @@
+<div>
+  <h2 id="page-heading" data-cy="RefugeeHeading">
+    <span jhiTranslate="albatestApp.refugee.home.title">Refugees</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="albatestApp.refugee.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-refugee"
+        [routerLink]="['/refugee/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="albatestApp.refugee.home.createLabel"> Create a new Refugee </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="refugees?.length === 0">
+    <span jhiTranslate="albatestApp.refugee.home.notFound">No refugees found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="refugees && refugees.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.qrcodeUUID">Qrcode UUID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.educationalLevel">Educational Level</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.mandatoryTutored">Mandatory Tutored</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.birthDate">Birth Date</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.disabledPerson">Disabled Person</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.religion">Religion</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.gender">Gender</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.personalInformation">Personal Information</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.primaryOccupation">Primary Occupation</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.legalSurvey">Legal Survey</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.refugee.medicalSurvey">Medical Survey</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let refugee of refugees; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/refugee', refugee.id, 'view']">{{ refugee.id }}</a>
+          </td>
+          <td>{{ refugee.qrcodeUUID }}</td>
+          <td jhiTranslate="{{ 'albatestApp.Edulevel.' + refugee.educationalLevel }}">{{ refugee.educationalLevel }}</td>
+          <td>{{ refugee.mandatoryTutored }}</td>
+          <td>{{ refugee.birthDate | formatMediumDate }}</td>
+          <td>{{ refugee.disabledPerson }}</td>
+          <td jhiTranslate="{{ 'albatestApp.Religion.' + refugee.religion }}">{{ refugee.religion }}</td>
+          <td jhiTranslate="{{ 'albatestApp.Gender.' + refugee.gender }}">{{ refugee.gender }}</td>
+          <td>
+            <div *ngIf="refugee.personalInformation">
+              <a [routerLink]="['/person', refugee.personalInformation?.id, 'view']">{{ refugee.personalInformation?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="refugee.primaryOccupation">
+              <a [routerLink]="['/job', refugee.primaryOccupation?.id, 'view']">{{ refugee.primaryOccupation?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="refugee.legalSurvey">
+              <a [routerLink]="['/legal-survey', refugee.legalSurvey?.id, 'view']">{{ refugee.legalSurvey?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="refugee.medicalSurvey">
+              <a [routerLink]="['/medical-survey', refugee.medicalSurvey?.id, 'view']">{{ refugee.medicalSurvey?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/refugee', refugee.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/refugee', refugee.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(refugee)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

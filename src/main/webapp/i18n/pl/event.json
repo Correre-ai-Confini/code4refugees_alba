@@ -1,0 +1,31 @@
+{
+  "albatestApp": {
+    "event": {
+      "home": {
+        "title": "Event",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Event",
+        "createOrEditLabel": "Dodaj lub edytuj: Event",
+        "notFound": "No Events found"
+      },
+      "created": "Utworzono nowy obiekt typu Event z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Event z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Event z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Event {{ id }}?"
+      },
+      "detail": {
+        "title": "Event"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "timestamp": "Timestamp",
+      "urgencyOfMedicalTreatment": "Urgency Of Medical Treatment",
+      "needForLegalAssistance": "Need For Legal Assistance",
+      "category": "Category",
+      "checkPoint": "Check Point",
+      "operator": "Operator",
+      "registration": "Registration"
+    }
+  }
+}

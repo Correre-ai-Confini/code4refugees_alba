@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Attachment.
+    -->
+    <changeSet id="20220319181131-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="category_id"
+                                 baseTableName="attachment"
+                                 constraintName="fk_attachment__category_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attachment_category"/>
+
+        <addForeignKeyConstraint baseColumnNames="refugee_id"
+                                 baseTableName="attachment"
+                                 constraintName="fk_attachment__refugee_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="refugee"/>
+
+        <addForeignKeyConstraint baseColumnNames="creator_id"
+                                 baseTableName="attachment"
+                                 constraintName="fk_attachment__creator_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="operator"/>
+
+        <addForeignKeyConstraint baseColumnNames="original_registration_record_id"
+                                 baseTableName="attachment"
+                                 constraintName="fk_attachment__original_registration_record_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="event"/>
+    </changeSet>
+</databaseChangeLog>

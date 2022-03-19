@@ -1,0 +1,100 @@
+<div>
+  <h2 id="page-heading" data-cy="EventHeading">
+    <span jhiTranslate="albatestApp.event.home.title">Events</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="albatestApp.event.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-event"
+        [routerLink]="['/event/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="albatestApp.event.home.createLabel"> Create a new Event </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="events?.length === 0">
+    <span jhiTranslate="albatestApp.event.home.notFound">No events found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="events && events.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.notes">Notes</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.timestamp">Timestamp</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.urgencyOfMedicalTreatment">Urgency Of Medical Treatment</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.needForLegalAssistance">Need For Legal Assistance</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.category">Category</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.checkPoint">Check Point</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.operator">Operator</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.event.registration">Registration</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/event', event.id, 'view']">{{ event.id }}</a>
+          </td>
+          <td>{{ event.notes }}</td>
+          <td>{{ event.timestamp | formatMediumDatetime }}</td>
+          <td jhiTranslate="{{ 'albatestApp.TreatmentPriority.' + event.urgencyOfMedicalTreatment }}">
+            {{ event.urgencyOfMedicalTreatment }}
+          </td>
+          <td>{{ event.needForLegalAssistance }}</td>
+          <td>
+            <div *ngIf="event.category">
+              <a [routerLink]="['/event-type', event.category?.id, 'view']">{{ event.category?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="event.checkPoint">
+              <a [routerLink]="['/check-point', event.checkPoint?.id, 'view']">{{ event.checkPoint?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="event.operator">
+              <a [routerLink]="['/operator', event.operator?.id, 'view']">{{ event.operator?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="event.registration">
+              <a [routerLink]="['/registration', event.registration?.id, 'view']">{{ event.registration?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/event', event.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/event', event.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(event)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

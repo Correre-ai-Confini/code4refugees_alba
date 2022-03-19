@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-family-relation-heading"
+        data-cy="FamilyRelationCreateUpdateHeading"
+        jhiTranslate="albatestApp.familyRelation.home.createOrEditLabel"
+      >
+        Create or edit a Family Relation
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.familyRelation.notes" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.familyRelation.relType" for="field_relType">Rel Type</label>
+          <select class="form-control" name="relType" formControlName="relType" id="field_relType" data-cy="relType">
+            <option [ngValue]="null">{{ 'albatestApp.FamilyRelationType.null' | translate }}</option>
+            <option *ngFor="let familyRelationType of familyRelationTypeValues" [value]="familyRelationType">
+              {{ 'albatestApp.FamilyRelationType.' + familyRelationType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.familyRelation.refugee1" for="field_refugee1">Refugee 1</label>
+          <select class="form-control" id="field_refugee1" data-cy="refugee1" name="refugee1" formControlName="refugee1">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="refugeeOption.id === editForm.get('refugee1')!.value?.id ? editForm.get('refugee1')!.value : refugeeOption"
+              *ngFor="let refugeeOption of refugeesSharedCollection; trackBy: trackRefugeeById"
+            >
+              {{ refugeeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.familyRelation.refugee2" for="field_refugee2">Refugee 2</label>
+          <select class="form-control" id="field_refugee2" data-cy="refugee2" name="refugee2" formControlName="refugee2">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="refugeeOption.id === editForm.get('refugee2')!.value?.id ? editForm.get('refugee2')!.value : refugeeOption"
+              *ngFor="let refugeeOption of refugeesSharedCollection; trackBy: trackRefugeeById"
+            >
+              {{ refugeeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

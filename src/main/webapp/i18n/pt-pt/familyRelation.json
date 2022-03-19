@@ -1,0 +1,27 @@
+{
+  "albatestApp": {
+    "familyRelation": {
+      "home": {
+        "title": "Family Relations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Family Relation",
+        "createOrEditLabel": "Criar ou editar Family Relation",
+        "notFound": "Nenhum Family Relations encontrado"
+      },
+      "created": "Um novo Family Relation foi criado com o identificador {{ param }}",
+      "updated": "Family Relation com identificador {{ param }} foi actualizado",
+      "deleted": "Family Relation com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Family Relation {{ id }}?"
+      },
+      "detail": {
+        "title": "Family Relation"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "relType": "Rel Type",
+      "refugee1": "Refugee 1",
+      "refugee2": "Refugee 2"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+<div>
+  <h2 id="page-heading" data-cy="AttachmentHeading">
+    <span jhiTranslate="albatestApp.attachment.home.title">Attachments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="albatestApp.attachment.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-attachment"
+        [routerLink]="['/attachment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="albatestApp.attachment.home.createLabel"> Create a new Attachment </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="attachments?.length === 0">
+    <span jhiTranslate="albatestApp.attachment.home.notFound">No attachments found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="attachments && attachments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.description">Description</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.creationTS">Creation TS</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.name">Name</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.contentBlob">Content Blob</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.contentType">Content Type</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.category">Category</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.refugee">Refugee</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.creator">Creator</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.attachment.originalRegistrationRecord">Original Registration Record</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let attachment of attachments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/attachment', attachment.id, 'view']">{{ attachment.id }}</a>
+          </td>
+          <td>{{ attachment.description }}</td>
+          <td>{{ attachment.creationTS | formatMediumDatetime }}</td>
+          <td>{{ attachment.name }}</td>
+          <td>
+            <a
+              *ngIf="attachment.contentBlob"
+              (click)="openFile(attachment.contentBlob, attachment.contentBlobContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="attachment.contentBlob">{{ attachment.contentBlobContentType }}, {{ byteSize(attachment.contentBlob) }}</span>
+          </td>
+          <td jhiTranslate="{{ 'albatestApp.ContentType.' + attachment.contentType }}">{{ attachment.contentType }}</td>
+          <td>
+            <div *ngIf="attachment.category">
+              <a [routerLink]="['/attachment-category', attachment.category?.id, 'view']">{{ attachment.category?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="attachment.refugee">
+              <a [routerLink]="['/refugee', attachment.refugee?.id, 'view']">{{ attachment.refugee?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="attachment.creator">
+              <a [routerLink]="['/operator', attachment.creator?.id, 'view']">{{ attachment.creator?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="attachment.originalRegistrationRecord">
+              <a [routerLink]="['/event', attachment.originalRegistrationRecord?.id, 'view']">{{
+                attachment.originalRegistrationRecord?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/attachment', attachment.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/attachment', attachment.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(attachment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

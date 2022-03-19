@@ -1,0 +1,19 @@
+export enum FamilyRelationType {
+  SON = 'SON',
+
+  NEPHEW = 'NEPHEW',
+
+  SIBLING = 'SIBLING',
+
+  PARTNER = 'PARTNER',
+
+  PARENT = 'PARENT',
+
+  GRANDPARENT = 'GRANDPARENT',
+
+  UNCLE = 'UNCLE',
+
+  LEGALTUTOR = 'LEGALTUTOR',
+
+  TUTORED = 'TUTORED',
+}

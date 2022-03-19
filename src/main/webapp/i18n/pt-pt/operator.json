@@ -1,0 +1,25 @@
+{
+  "albatestApp": {
+    "operator": {
+      "home": {
+        "title": "Operators",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Operator",
+        "createOrEditLabel": "Criar ou editar Operator",
+        "notFound": "Nenhum Operators encontrado"
+      },
+      "created": "Um novo Operator foi criado com o identificador {{ param }}",
+      "updated": "Operator com identificador {{ param }} foi actualizado",
+      "deleted": "Operator com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Operator {{ id }}?"
+      },
+      "detail": {
+        "title": "Operator"
+      },
+      "id": "ID",
+      "kindOfOperator": "Kind Of Operator",
+      "personalInformation": "Personal Information"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "albatestApp": {
+    "job": {
+      "home": {
+        "title": "Jobs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Job",
+        "createOrEditLabel": "Створити чи редагувати Job",
+        "notFound": "No Jobs found"
+      },
+      "created": "Новий Job створений з ідентифікатором {{ param }}",
+      "updated": "Job оновлений з ідентифікатором {{ param }}",
+      "deleted": "Job видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Job {{ id }}?"
+      },
+      "detail": {
+        "title": "Job"
+      },
+      "id": "ID",
+      "jobTitle": "Job Title"
+    }
+  }
+}

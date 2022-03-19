@@ -1,0 +1,28 @@
+{
+  "albatestApp": {
+    "registration": {
+      "home": {
+        "title": "Registrations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Registration",
+        "createOrEditLabel": "Створити чи редагувати Registration",
+        "notFound": "No Registrations found"
+      },
+      "created": "Новий Registration створений з ідентифікатором {{ param }}",
+      "updated": "Registration оновлений з ідентифікатором {{ param }}",
+      "deleted": "Registration видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Registration {{ id }}?"
+      },
+      "detail": {
+        "title": "Registration"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "timestamp": "Timestamp",
+      "legalConsentBlob": "Legal Consent Blob",
+      "refugee": "Refugee",
+      "events": "Events"
+    }
+  }
+}

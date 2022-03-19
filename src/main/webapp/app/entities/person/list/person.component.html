@@ -1,0 +1,88 @@
+<div>
+  <h2 id="page-heading" data-cy="PersonHeading">
+    <span jhiTranslate="albatestApp.person.home.title">People</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="albatestApp.person.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-person"
+        [routerLink]="['/person/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="albatestApp.person.home.createLabel"> Create a new Person </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="people?.length === 0">
+    <span jhiTranslate="albatestApp.person.home.notFound">No people found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="people && people.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.personalIdentifier">Personal Identifier</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.identifierType">Identifier Type</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.firstName">First Name</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.lastName">Last Name</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.email">Email</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.phoneNumber">Phone Number</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.firstSpokenLanguage">First Spoken Language</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.secondSpokenLanguage">Second Spoken Language</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.person.comingFrom">Coming From</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of people; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/person', person.id, 'view']">{{ person.id }}</a>
+          </td>
+          <td>{{ person.personalIdentifier }}</td>
+          <td>{{ person.identifierType }}</td>
+          <td>{{ person.firstName }}</td>
+          <td>{{ person.lastName }}</td>
+          <td>{{ person.email }}</td>
+          <td>{{ person.phoneNumber }}</td>
+          <td jhiTranslate="{{ 'albatestApp.Language.' + person.firstSpokenLanguage }}">{{ person.firstSpokenLanguage }}</td>
+          <td jhiTranslate="{{ 'albatestApp.Language.' + person.secondSpokenLanguage }}">{{ person.secondSpokenLanguage }}</td>
+          <td>
+            <div *ngIf="person.comingFrom">
+              <a [routerLink]="['/location', person.comingFrom?.id, 'view']">{{ person.comingFrom?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/person', person.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/person', person.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(person)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

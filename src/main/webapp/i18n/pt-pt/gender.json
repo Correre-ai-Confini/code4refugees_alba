@@ -1,0 +1,10 @@
+{
+  "albatestApp": {
+    "Gender": {
+      "null": "",
+      "M": "M",
+      "F": "F",
+      "A": "A"
+    }
+  }
+}

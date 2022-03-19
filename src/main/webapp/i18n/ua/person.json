@@ -1,0 +1,32 @@
+{
+  "albatestApp": {
+    "person": {
+      "home": {
+        "title": "People",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Person",
+        "createOrEditLabel": "Створити чи редагувати Person",
+        "notFound": "No People found"
+      },
+      "created": "Новий Person створений з ідентифікатором {{ param }}",
+      "updated": "Person оновлений з ідентифікатором {{ param }}",
+      "deleted": "Person видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Person {{ id }}?"
+      },
+      "detail": {
+        "title": "Person"
+      },
+      "id": "ID",
+      "personalIdentifier": "Personal Identifier",
+      "identifierType": "Identifier Type",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "firstSpokenLanguage": "First Spoken Language",
+      "secondSpokenLanguage": "Second Spoken Language",
+      "comingFrom": "Coming From"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "albatestApp": {
+    "country": {
+      "home": {
+        "title": "Countries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Country",
+        "createOrEditLabel": "Genera o modifica un Country",
+        "notFound": "No Countries found"
+      },
+      "created": "&Egrave; stato generato un nuovo Country con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Country identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Country con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Country {{ id }}?"
+      },
+      "detail": {
+        "title": "Country"
+      },
+      "id": "ID",
+      "countryName": "Country Name",
+      "region": "Region"
+    }
+  }
+}

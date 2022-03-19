@@ -1,0 +1,25 @@
+{
+  "albatestApp": {
+    "checkPoint": {
+      "home": {
+        "title": "CheckPoints",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Check Point",
+        "createOrEditLabel": "Créer ou éditer un Check Point",
+        "notFound": "Aucun Check Point trouvé"
+      },
+      "created": "Un nouveau Check Point a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Check Point avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Check Point avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Check Point {{ id }} ?"
+      },
+      "detail": {
+        "title": "Check Point"
+      },
+      "id": "ID",
+      "friendlyname": "Friendlyname",
+      "location": "Location"
+    }
+  }
+}

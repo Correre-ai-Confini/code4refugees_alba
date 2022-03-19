@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="operator">
+      <h2 data-cy="operatorDetailsHeading"><span jhiTranslate="albatestApp.operator.detail.title">Operator</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ operator.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.operator.kindOfOperator">Kind Of Operator</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.KindOfOperator.' + operator.kindOfOperator }}">{{ operator.kindOfOperator }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.operator.personalInformation">Personal Information</span></dt>
+        <dd>
+          <div *ngIf="operator.personalInformation">
+            <a [routerLink]="['/person', operator.personalInformation?.id, 'view']">{{ operator.personalInformation?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/operator', operator.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

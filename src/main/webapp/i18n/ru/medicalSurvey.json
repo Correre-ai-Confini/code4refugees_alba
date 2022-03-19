@@ -1,0 +1,26 @@
+{
+  "albatestApp": {
+    "medicalSurvey": {
+      "home": {
+        "title": "Medical Surveys",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Medical Survey",
+        "createOrEditLabel": "Создать или отредактировать Medical Survey",
+        "notFound": "Medical Surveys не найдено"
+      },
+      "created": "Новый Medical Survey создан с идентификатором {{ param }}",
+      "updated": "Medical Survey обновлен с идентификатором {{ param }}",
+      "deleted": "Medical Survey удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Medical Survey {{ id }}?"
+      },
+      "detail": {
+        "title": "Medical Survey"
+      },
+      "id": "ID",
+      "ongoingIllnesses": "Ongoing Illnesses",
+      "ongoingTreatments": "Ongoing Treatments",
+      "attachment": "Attachment"
+    }
+  }
+}

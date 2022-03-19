@@ -1,0 +1,63 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-legal-survey-heading"
+        data-cy="LegalSurveyCreateUpdateHeading"
+        jhiTranslate="albatestApp.legalSurvey.home.createOrEditLabel"
+      >
+        Create or edit a Legal Survey
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.legalSurvey.notes" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.legalSurvey.issues" for="field_issues">Issues</label>
+          <input type="text" class="form-control" name="issues" id="field_issues" data-cy="issues" formControlName="issues" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.legalSurvey.attachment" for="field_attachment">Attachment</label>
+          <select class="form-control" id="field_attachment" data-cy="attachment" name="attachment" formControlName="attachment">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                attachmentOption.id === editForm.get('attachment')!.value?.id ? editForm.get('attachment')!.value : attachmentOption
+              "
+              *ngFor="let attachmentOption of attachmentsSharedCollection; trackBy: trackAttachmentById"
+            >
+              {{ attachmentOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

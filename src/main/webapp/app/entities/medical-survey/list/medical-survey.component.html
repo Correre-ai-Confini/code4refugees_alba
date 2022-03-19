@@ -1,0 +1,86 @@
+<div>
+  <h2 id="page-heading" data-cy="MedicalSurveyHeading">
+    <span jhiTranslate="albatestApp.medicalSurvey.home.title">Medical Surveys</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="albatestApp.medicalSurvey.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-medical-survey"
+        [routerLink]="['/medical-survey/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="albatestApp.medicalSurvey.home.createLabel"> Create a new Medical Survey </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="medicalSurveys?.length === 0">
+    <span jhiTranslate="albatestApp.medicalSurvey.home.notFound">No medicalSurveys found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="medicalSurveys && medicalSurveys.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.medicalSurvey.ongoingIllnesses">Ongoing Illnesses</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.medicalSurvey.ongoingTreatments">Ongoing Treatments</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.medicalSurvey.attachment">Attachment</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let medicalSurvey of medicalSurveys; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/medical-survey', medicalSurvey.id, 'view']">{{ medicalSurvey.id }}</a>
+          </td>
+          <td>{{ medicalSurvey.ongoingIllnesses }}</td>
+          <td>{{ medicalSurvey.ongoingTreatments }}</td>
+          <td>
+            <div *ngIf="medicalSurvey.attachment">
+              <a [routerLink]="['/attachment', medicalSurvey.attachment?.id, 'view']">{{ medicalSurvey.attachment?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/medical-survey', medicalSurvey.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/medical-survey', medicalSurvey.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(medicalSurvey)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

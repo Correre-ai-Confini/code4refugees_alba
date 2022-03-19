@@ -1,0 +1,233 @@
+
+entity Region {
+	regionName String
+}
+
+entity Country {
+	countryName String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Location {
+	streetAddress String,
+	postalCode String,
+	city String,
+	stateProvince String
+}
+
+entity CheckPoint {
+	friendlyname String required
+}
+
+relationship OneToOne {
+	CheckPoint{location} to Location
+}
+
+relationship OneToOne {
+	Refugee{personalInformation} to Person
+}
+entity Refugee {
+ qrcodeUUID String,
+ educationalLevel Edulevel,
+ mandatoryTutored Boolean,
+ birthDate LocalDate,
+ disabledPerson Boolean,
+ religion Religion,
+ gender Gender
+}
+
+enum Religion {
+	CHRISTIAN, MUSLIM, HEBREW, OTHER, ATHEIST, UNKNOWN
+}
+
+enum Gender {
+  M, F, A
+}
+
+enum Edulevel {
+	NO_SCHOOL, PRIMARY, SECONDARY, COLLEGE, MASTER
+}
+
+
+relationship OneToOne {
+	Operator{personalInformation} to Person
+}
+entity Operator {
+	kindOfOperator KindOfOperator
+}
+
+
+enum KindOfOperator {
+    MEDICAL_DOCTOR, MEDICAL_SPECIALIST, PSYCHOLOGIST, LEGAL_OFFICER
+}
+
+enum TreatmentPriority {
+	BLACK, RED, YELLOW, GREEN, WHITE
+}
+
+entity EventType {
+	description String
+}
+relationship OneToOne {
+	Event{category} to EventType
+}
+
+entity FamilyRelation {	
+    notes String,
+    relType FamilyRelationType
+}
+enum FamilyRelationType {	
+    SON, NEPHEW, SIBLING, PARTNER, PARENT, GRANDPARENT, UNCLE, LEGALTUTOR, TUTORED
+}
+
+
+relationship ManyToOne {
+	FamilyRelation{refugee1} to Refugee
+}
+relationship ManyToOne {
+	FamilyRelation{refugee2} to Refugee
+}
+
+
+
+/**
+* legalConsent will be a base64 BLOB with the 
+* written authorization of the refugee to the
+* registration itself
+*/
+entity Event {
+	notes String,
+    timestamp ZonedDateTime,
+    urgencyOfMedicalTreatment TreatmentPriority,
+    needForLegalAssistance Integer
+}
+
+entity Registration {
+	notes String,
+    timestamp ZonedDateTime,
+	legalConsentBlob Blob
+}
+
+relationship OneToMany {
+	Registration{events} to Event
+}
+
+relationship OneToOne {
+	Registration{refugee} to Refugee
+}
+
+
+
+relationship OneToOne {
+	Event{checkPoint} to CheckPoint
+}
+relationship OneToOne {
+	Event{operator} to Operator
+}
+
+
+
+entity Person {
+    personalIdentifier String,
+    identifierType String,
+    firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+    firstSpokenLanguage Language,
+    secondSpokenLanguage Language
+}
+
+relationship OneToOne {
+	Person{comingFrom} to Location
+}
+
+relationship ManyToOne {
+	Refugee{primaryOccupation} to Job
+}
+relationship ManyToOne {
+	Refugee{legalSurvey} to LegalSurvey
+}
+entity Job {
+	jobTitle String
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH, 
+    RUSSIAN, UKRAINIAN, POLISH, 
+    GERMAN, ITALIAN, PORTOGUESE
+}
+
+relationship OneToOne {
+	Country{region} to Region
+}
+
+relationship OneToOne {
+	Location{country} to Country
+}
+
+
+entity MedicalSurvey {
+	ongoingIllnesses String,
+    ongoingTreatments String
+}
+
+entity LegalSurvey {
+	notes String,
+    issues String
+}
+
+
+
+relationship ManyToOne {
+	MedicalSurvey{attachment} to Attachment
+}
+relationship ManyToOne {
+	LegalSurvey{attachment} to Attachment
+}
+
+
+enum ContentType {
+	BLOB, TEXT, CURRENCY, DATE, TIME, NUMBER
+}
+
+entity Attachment {
+	description String,
+    creationTS ZonedDateTime,
+    name String,
+    contentBlob Blob,
+    contentType ContentType
+}
+
+entity AttachmentCategory {
+   description String
+}
+
+relationship ManyToOne {
+	Attachment{category} to AttachmentCategory
+}
+relationship ManyToOne {
+	Attachment{refugee} to Refugee
+}
+relationship ManyToOne {
+	Attachment{creator} to Operator
+}
+relationship ManyToOne {
+	Attachment{originalRegistrationRecord} to Event
+}
+relationship ManyToOne {
+	Refugee{medicalSurvey} to MedicalSurvey
+}
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

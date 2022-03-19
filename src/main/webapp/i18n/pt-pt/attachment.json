@@ -1,0 +1,32 @@
+{
+  "albatestApp": {
+    "attachment": {
+      "home": {
+        "title": "Attachments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Attachment",
+        "createOrEditLabel": "Criar ou editar Attachment",
+        "notFound": "Nenhum Attachments encontrado"
+      },
+      "created": "Um novo Attachment foi criado com o identificador {{ param }}",
+      "updated": "Attachment com identificador {{ param }} foi actualizado",
+      "deleted": "Attachment com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Attachment {{ id }}?"
+      },
+      "detail": {
+        "title": "Attachment"
+      },
+      "id": "ID",
+      "description": "Description",
+      "creationTS": "Creation TS",
+      "name": "Name",
+      "contentBlob": "Content Blob",
+      "contentType": "Content Type",
+      "category": "Category",
+      "refugee": "Refugee",
+      "creator": "Creator",
+      "originalRegistrationRecord": "Original Registration Record"
+    }
+  }
+}

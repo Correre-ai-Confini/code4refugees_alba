@@ -1,0 +1,11 @@
+{
+  "albatestApp": {
+    "KindOfOperator": {
+      "null": "",
+      "MEDICAL_DOCTOR": "MEDICAL_DOCTOR",
+      "MEDICAL_SPECIALIST": "MEDICAL_SPECIALIST",
+      "PSYCHOLOGIST": "PSYCHOLOGIST",
+      "LEGAL_OFFICER": "LEGAL_OFFICER"
+    }
+  }
+}

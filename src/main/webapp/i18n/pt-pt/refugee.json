@@ -1,0 +1,34 @@
+{
+  "albatestApp": {
+    "refugee": {
+      "home": {
+        "title": "Refugees",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Refugee",
+        "createOrEditLabel": "Criar ou editar Refugee",
+        "notFound": "Nenhum Refugees encontrado"
+      },
+      "created": "Um novo Refugee foi criado com o identificador {{ param }}",
+      "updated": "Refugee com identificador {{ param }} foi actualizado",
+      "deleted": "Refugee com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Refugee {{ id }}?"
+      },
+      "detail": {
+        "title": "Refugee"
+      },
+      "id": "ID",
+      "qrcodeUUID": "Qrcode UUID",
+      "educationalLevel": "Educational Level",
+      "mandatoryTutored": "Mandatory Tutored",
+      "birthDate": "Birth Date",
+      "disabledPerson": "Disabled Person",
+      "religion": "Religion",
+      "gender": "Gender",
+      "personalInformation": "Personal Information",
+      "primaryOccupation": "Primary Occupation",
+      "legalSurvey": "Legal Survey",
+      "medicalSurvey": "Medical Survey"
+    }
+  }
+}

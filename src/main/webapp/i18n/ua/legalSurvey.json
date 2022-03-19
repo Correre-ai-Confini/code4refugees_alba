@@ -1,0 +1,26 @@
+{
+  "albatestApp": {
+    "legalSurvey": {
+      "home": {
+        "title": "Legal Surveys",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Legal Survey",
+        "createOrEditLabel": "Створити чи редагувати Legal Survey",
+        "notFound": "No Legal Surveys found"
+      },
+      "created": "Новий Legal Survey створений з ідентифікатором {{ param }}",
+      "updated": "Legal Survey оновлений з ідентифікатором {{ param }}",
+      "deleted": "Legal Survey видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Legal Survey {{ id }}?"
+      },
+      "detail": {
+        "title": "Legal Survey"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "issues": "Issues",
+      "attachment": "Attachment"
+    }
+  }
+}

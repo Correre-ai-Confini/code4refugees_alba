@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="event">
+      <h2 data-cy="eventDetailsHeading"><span jhiTranslate="albatestApp.event.detail.title">Event</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ event.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.notes">Notes</span></dt>
+        <dd>
+          <span>{{ event.notes }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.timestamp">Timestamp</span></dt>
+        <dd>
+          <span>{{ event.timestamp | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.urgencyOfMedicalTreatment">Urgency Of Medical Treatment</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.TreatmentPriority.' + event.urgencyOfMedicalTreatment }}">{{
+            event.urgencyOfMedicalTreatment
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.needForLegalAssistance">Need For Legal Assistance</span></dt>
+        <dd>
+          <span>{{ event.needForLegalAssistance }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.category">Category</span></dt>
+        <dd>
+          <div *ngIf="event.category">
+            <a [routerLink]="['/event-type', event.category?.id, 'view']">{{ event.category?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.checkPoint">Check Point</span></dt>
+        <dd>
+          <div *ngIf="event.checkPoint">
+            <a [routerLink]="['/check-point', event.checkPoint?.id, 'view']">{{ event.checkPoint?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.operator">Operator</span></dt>
+        <dd>
+          <div *ngIf="event.operator">
+            <a [routerLink]="['/operator', event.operator?.id, 'view']">{{ event.operator?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.event.registration">Registration</span></dt>
+        <dd>
+          <div *ngIf="event.registration">
+            <a [routerLink]="['/registration', event.registration?.id, 'view']">{{ event.registration?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/event', event.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

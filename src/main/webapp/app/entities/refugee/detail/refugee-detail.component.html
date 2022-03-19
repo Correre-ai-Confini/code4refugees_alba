@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="refugee">
+      <h2 data-cy="refugeeDetailsHeading"><span jhiTranslate="albatestApp.refugee.detail.title">Refugee</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ refugee.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.qrcodeUUID">Qrcode UUID</span></dt>
+        <dd>
+          <span>{{ refugee.qrcodeUUID }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.educationalLevel">Educational Level</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.Edulevel.' + refugee.educationalLevel }}">{{ refugee.educationalLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.mandatoryTutored">Mandatory Tutored</span></dt>
+        <dd>
+          <span>{{ refugee.mandatoryTutored }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.birthDate">Birth Date</span></dt>
+        <dd>
+          <span>{{ refugee.birthDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.disabledPerson">Disabled Person</span></dt>
+        <dd>
+          <span>{{ refugee.disabledPerson }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.religion">Religion</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.Religion.' + refugee.religion }}">{{ refugee.religion }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.gender">Gender</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.Gender.' + refugee.gender }}">{{ refugee.gender }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.personalInformation">Personal Information</span></dt>
+        <dd>
+          <div *ngIf="refugee.personalInformation">
+            <a [routerLink]="['/person', refugee.personalInformation?.id, 'view']">{{ refugee.personalInformation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.primaryOccupation">Primary Occupation</span></dt>
+        <dd>
+          <div *ngIf="refugee.primaryOccupation">
+            <a [routerLink]="['/job', refugee.primaryOccupation?.id, 'view']">{{ refugee.primaryOccupation?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.legalSurvey">Legal Survey</span></dt>
+        <dd>
+          <div *ngIf="refugee.legalSurvey">
+            <a [routerLink]="['/legal-survey', refugee.legalSurvey?.id, 'view']">{{ refugee.legalSurvey?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.refugee.medicalSurvey">Medical Survey</span></dt>
+        <dd>
+          <div *ngIf="refugee.medicalSurvey">
+            <a [routerLink]="['/medical-survey', refugee.medicalSurvey?.id, 'view']">{{ refugee.medicalSurvey?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/refugee', refugee.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

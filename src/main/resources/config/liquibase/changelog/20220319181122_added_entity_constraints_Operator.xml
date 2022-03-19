@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Operator.
+    -->
+    <changeSet id="20220319181122-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="personal_information_id"
+                                 baseTableName="operator"
+                                 constraintName="fk_operator__personal_information_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+    </changeSet>
+</databaseChangeLog>

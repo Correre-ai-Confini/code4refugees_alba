@@ -1,0 +1,19 @@
+export enum Language {
+  FRENCH = 'FRENCH',
+
+  ENGLISH = 'ENGLISH',
+
+  SPANISH = 'SPANISH',
+
+  RUSSIAN = 'RUSSIAN',
+
+  UKRAINIAN = 'UKRAINIAN',
+
+  POLISH = 'POLISH',
+
+  GERMAN = 'GERMAN',
+
+  ITALIAN = 'ITALIAN',
+
+  PORTOGUESE = 'PORTOGUESE',
+}

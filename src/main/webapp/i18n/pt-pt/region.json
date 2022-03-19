@@ -1,0 +1,24 @@
+{
+  "albatestApp": {
+    "region": {
+      "home": {
+        "title": "Regions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Region",
+        "createOrEditLabel": "Criar ou editar Region",
+        "notFound": "Nenhum Regions encontrado"
+      },
+      "created": "Um novo Region foi criado com o identificador {{ param }}",
+      "updated": "Region com identificador {{ param }} foi actualizado",
+      "deleted": "Region com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Region {{ id }}?"
+      },
+      "detail": {
+        "title": "Region"
+      },
+      "id": "ID",
+      "regionName": "Region Name"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "albatestApp": {
+    "registration": {
+      "home": {
+        "title": "Registrations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Criar novo(a) Registration",
+        "createOrEditLabel": "Criar ou editar Registration",
+        "notFound": "Nenhum Registrations encontrado"
+      },
+      "created": "Um novo Registration foi criado com o identificador {{ param }}",
+      "updated": "Registration com identificador {{ param }} foi actualizado",
+      "deleted": "Registration com identificador {{ param }} foi eliminado",
+      "delete": {
+        "question": "Tem a certeza que pretende eliminar o(a) Registration {{ id }}?"
+      },
+      "detail": {
+        "title": "Registration"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "timestamp": "Timestamp",
+      "legalConsentBlob": "Legal Consent Blob",
+      "refugee": "Refugee",
+      "events": "Events"
+    }
+  }
+}

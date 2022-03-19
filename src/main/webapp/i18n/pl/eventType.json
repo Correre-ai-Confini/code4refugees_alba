@@ -1,0 +1,24 @@
+{
+  "albatestApp": {
+    "eventType": {
+      "home": {
+        "title": "Event Type",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Dodaj Event Type",
+        "createOrEditLabel": "Dodaj lub edytuj: Event Type",
+        "notFound": "No Event Types found"
+      },
+      "created": "Utworzono nowy obiekt typu Event Type z identyfikatorem {{ param }}",
+      "updated": "Uaktualniono obiekt typu Event Type z identyfikatorem {{ param }}",
+      "deleted": "Usunięto obiekt typu Event Type z identyfikatorem {{ param }}",
+      "delete": {
+        "question": "Czy na pewno chcesz usunąć Event Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Event Type"
+      },
+      "id": "ID",
+      "description": "Description"
+    }
+  }
+}

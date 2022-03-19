@@ -1,0 +1,24 @@
+{
+  "albatestApp": {
+    "job": {
+      "home": {
+        "title": "Jobs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Job",
+        "createOrEditLabel": "Genera o modifica un Job",
+        "notFound": "No Jobs found"
+      },
+      "created": "&Egrave; stato generato un nuovo Job con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Job identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Job con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Job {{ id }}?"
+      },
+      "detail": {
+        "title": "Job"
+      },
+      "id": "ID",
+      "jobTitle": "Job Title"
+    }
+  }
+}

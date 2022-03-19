@@ -1,0 +1,27 @@
+{
+  "albatestApp": {
+    "familyRelation": {
+      "home": {
+        "title": "Family Relations",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Family Relation",
+        "createOrEditLabel": "Создать или отредактировать Family Relation",
+        "notFound": "Family Relations не найдено"
+      },
+      "created": "Новый Family Relation создан с идентификатором {{ param }}",
+      "updated": "Family Relation обновлен с идентификатором {{ param }}",
+      "deleted": "Family Relation удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Family Relation {{ id }}?"
+      },
+      "detail": {
+        "title": "Family Relation"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "relType": "Rel Type",
+      "refugee1": "Refugee 1",
+      "refugee2": "Refugee 2"
+    }
+  }
+}

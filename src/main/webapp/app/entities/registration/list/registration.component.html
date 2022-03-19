@@ -1,0 +1,98 @@
+<div>
+  <h2 id="page-heading" data-cy="RegistrationHeading">
+    <span jhiTranslate="albatestApp.registration.home.title">Registrations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="albatestApp.registration.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-registration"
+        [routerLink]="['/registration/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="albatestApp.registration.home.createLabel"> Create a new Registration </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="registrations?.length === 0">
+    <span jhiTranslate="albatestApp.registration.home.notFound">No registrations found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="registrations && registrations.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.registration.notes">Notes</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.registration.timestamp">Timestamp</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.registration.legalConsentBlob">Legal Consent Blob</span></th>
+          <th scope="col"><span jhiTranslate="albatestApp.registration.refugee">Refugee</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registration of registrations; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/registration', registration.id, 'view']">{{ registration.id }}</a>
+          </td>
+          <td>{{ registration.notes }}</td>
+          <td>{{ registration.timestamp | formatMediumDatetime }}</td>
+          <td>
+            <a
+              *ngIf="registration.legalConsentBlob"
+              (click)="openFile(registration.legalConsentBlob, registration.legalConsentBlobContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="registration.legalConsentBlob"
+              >{{ registration.legalConsentBlobContentType }}, {{ byteSize(registration.legalConsentBlob) }}</span
+            >
+          </td>
+          <td>
+            <div *ngIf="registration.refugee">
+              <a [routerLink]="['/refugee', registration.refugee?.id, 'view']">{{ registration.refugee?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/registration', registration.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/registration', registration.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(registration)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

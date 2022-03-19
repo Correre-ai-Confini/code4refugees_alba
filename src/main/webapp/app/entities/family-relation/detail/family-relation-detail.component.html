@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="familyRelation">
+      <h2 data-cy="familyRelationDetailsHeading"><span jhiTranslate="albatestApp.familyRelation.detail.title">Family Relation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ familyRelation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.familyRelation.notes">Notes</span></dt>
+        <dd>
+          <span>{{ familyRelation.notes }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.familyRelation.relType">Rel Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.FamilyRelationType.' + familyRelation.relType }}">{{ familyRelation.relType }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.familyRelation.refugee1">Refugee 1</span></dt>
+        <dd>
+          <div *ngIf="familyRelation.refugee1">
+            <a [routerLink]="['/refugee', familyRelation.refugee1?.id, 'view']">{{ familyRelation.refugee1?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.familyRelation.refugee2">Refugee 2</span></dt>
+        <dd>
+          <div *ngIf="familyRelation.refugee2">
+            <a [routerLink]="['/refugee', familyRelation.refugee2?.id, 'view']">{{ familyRelation.refugee2?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/family-relation', familyRelation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "albatestApp": {
+    "region": {
+      "home": {
+        "title": "Regions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Region",
+        "createOrEditLabel": "Створити чи редагувати Region",
+        "notFound": "No Regions found"
+      },
+      "created": "Новий Region створений з ідентифікатором {{ param }}",
+      "updated": "Region оновлений з ідентифікатором {{ param }}",
+      "deleted": "Region видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Region {{ id }}?"
+      },
+      "detail": {
+        "title": "Region"
+      },
+      "id": "ID",
+      "regionName": "Region Name"
+    }
+  }
+}

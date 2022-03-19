@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="attachment">
+      <h2 data-cy="attachmentDetailsHeading"><span jhiTranslate="albatestApp.attachment.detail.title">Attachment</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ attachment.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.description">Description</span></dt>
+        <dd>
+          <span>{{ attachment.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.creationTS">Creation TS</span></dt>
+        <dd>
+          <span>{{ attachment.creationTS | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.name">Name</span></dt>
+        <dd>
+          <span>{{ attachment.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.contentBlob">Content Blob</span></dt>
+        <dd>
+          <div *ngIf="attachment.contentBlob">
+            <a (click)="openFile(attachment.contentBlob, attachment.contentBlobContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ attachment.contentBlobContentType }}, {{ byteSize(attachment.contentBlob) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.contentType">Content Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'albatestApp.ContentType.' + attachment.contentType }}">{{ attachment.contentType }}</span>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.category">Category</span></dt>
+        <dd>
+          <div *ngIf="attachment.category">
+            <a [routerLink]="['/attachment-category', attachment.category?.id, 'view']">{{ attachment.category?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.refugee">Refugee</span></dt>
+        <dd>
+          <div *ngIf="attachment.refugee">
+            <a [routerLink]="['/refugee', attachment.refugee?.id, 'view']">{{ attachment.refugee?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.creator">Creator</span></dt>
+        <dd>
+          <div *ngIf="attachment.creator">
+            <a [routerLink]="['/operator', attachment.creator?.id, 'view']">{{ attachment.creator?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="albatestApp.attachment.originalRegistrationRecord">Original Registration Record</span></dt>
+        <dd>
+          <div *ngIf="attachment.originalRegistrationRecord">
+            <a [routerLink]="['/event', attachment.originalRegistrationRecord?.id, 'view']">{{
+              attachment.originalRegistrationRecord?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/attachment', attachment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "albatestApp": {
+    "event": {
+      "home": {
+        "title": "Events",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Genera un nuovo Event",
+        "createOrEditLabel": "Genera o modifica un Event",
+        "notFound": "No Events found"
+      },
+      "created": "&Egrave; stato generato un nuovo Event con identificatore {{ param }}",
+      "updated": "&Egrave; stato aggiornato Event identificato da {{ param }}",
+      "deleted": "&Egrave; stato eliminato Event con identificatore {{ param }}",
+      "delete": {
+        "question": "Sei sicuro di volere eliminare Event {{ id }}?"
+      },
+      "detail": {
+        "title": "Event"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "timestamp": "Timestamp",
+      "urgencyOfMedicalTreatment": "Urgency Of Medical Treatment",
+      "needForLegalAssistance": "Need For Legal Assistance",
+      "category": "Category",
+      "checkPoint": "Check Point",
+      "operator": "Operator",
+      "registration": "Registration"
+    }
+  }
+}

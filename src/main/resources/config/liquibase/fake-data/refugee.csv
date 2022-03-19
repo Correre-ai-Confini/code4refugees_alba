@@ -1,0 +1,11 @@
+id;qrcode_uuid;educational_level;mandatory_tutored;birth_date;disabled_person;religion;gender
+1;Buckinghamshire Supervisor drive;COLLEGE;true;2022-03-19;true;MUSLIM;F
+2;multi-byte;COLLEGE;true;2022-03-19;false;CHRISTIAN;M
+3;deposit;SECONDARY;false;2022-03-19;true;CHRISTIAN;A
+4;Zimbabwe models;COLLEGE;false;2022-03-19;true;ATHEIST;M
+5;Pennsylvania;NO_SCHOOL;false;2022-03-18;true;ATHEIST;A
+6;intuitive;COLLEGE;true;2022-03-19;true;CHRISTIAN;M
+7;Unbranded Barthelemy;MASTER;true;2022-03-19;true;UNKNOWN;F
+8;Ville;MASTER;true;2022-03-18;false;OTHER;A
+9;Liaison;MASTER;true;2022-03-19;true;CHRISTIAN;F
+10;optical;MASTER;true;2022-03-19;false;OTHER;A

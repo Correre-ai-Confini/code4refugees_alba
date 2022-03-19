@@ -1,0 +1,207 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-refugee-heading" data-cy="RefugeeCreateUpdateHeading" jhiTranslate="albatestApp.refugee.home.createOrEditLabel">
+        Create or edit a Refugee
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.qrcodeUUID" for="field_qrcodeUUID">Qrcode UUID</label>
+          <input
+            type="text"
+            class="form-control"
+            name="qrcodeUUID"
+            id="field_qrcodeUUID"
+            data-cy="qrcodeUUID"
+            formControlName="qrcodeUUID"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.educationalLevel" for="field_educationalLevel"
+            >Educational Level</label
+          >
+          <select
+            class="form-control"
+            name="educationalLevel"
+            formControlName="educationalLevel"
+            id="field_educationalLevel"
+            data-cy="educationalLevel"
+          >
+            <option [ngValue]="null">{{ 'albatestApp.Edulevel.null' | translate }}</option>
+            <option *ngFor="let edulevel of edulevelValues" [value]="edulevel">{{ 'albatestApp.Edulevel.' + edulevel | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.mandatoryTutored" for="field_mandatoryTutored"
+            >Mandatory Tutored</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="mandatoryTutored"
+            id="field_mandatoryTutored"
+            data-cy="mandatoryTutored"
+            formControlName="mandatoryTutored"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.birthDate" for="field_birthDate">Birth Date</label>
+          <div class="input-group">
+            <input
+              id="field_birthDate"
+              data-cy="birthDate"
+              type="text"
+              class="form-control"
+              name="birthDate"
+              ngbDatepicker
+              #birthDateDp="ngbDatepicker"
+              formControlName="birthDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="birthDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.disabledPerson" for="field_disabledPerson">Disabled Person</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="disabledPerson"
+            id="field_disabledPerson"
+            data-cy="disabledPerson"
+            formControlName="disabledPerson"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.religion" for="field_religion">Religion</label>
+          <select class="form-control" name="religion" formControlName="religion" id="field_religion" data-cy="religion">
+            <option [ngValue]="null">{{ 'albatestApp.Religion.null' | translate }}</option>
+            <option *ngFor="let religion of religionValues" [value]="religion">{{ 'albatestApp.Religion.' + religion | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.gender" for="field_gender">Gender</label>
+          <select class="form-control" name="gender" formControlName="gender" id="field_gender" data-cy="gender">
+            <option [ngValue]="null">{{ 'albatestApp.Gender.null' | translate }}</option>
+            <option *ngFor="let gender of genderValues" [value]="gender">{{ 'albatestApp.Gender.' + gender | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.personalInformation" for="field_personalInformation"
+            >Personal Information</label
+          >
+          <select
+            class="form-control"
+            id="field_personalInformation"
+            data-cy="personalInformation"
+            name="personalInformation"
+            formControlName="personalInformation"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                personOption.id === editForm.get('personalInformation')!.value?.id
+                  ? editForm.get('personalInformation')!.value
+                  : personOption
+              "
+              *ngFor="let personOption of personalInformationsCollection; trackBy: trackPersonById"
+            >
+              {{ personOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.primaryOccupation" for="field_primaryOccupation"
+            >Primary Occupation</label
+          >
+          <select
+            class="form-control"
+            id="field_primaryOccupation"
+            data-cy="primaryOccupation"
+            name="primaryOccupation"
+            formControlName="primaryOccupation"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                jobOption.id === editForm.get('primaryOccupation')!.value?.id ? editForm.get('primaryOccupation')!.value : jobOption
+              "
+              *ngFor="let jobOption of jobsSharedCollection; trackBy: trackJobById"
+            >
+              {{ jobOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.legalSurvey" for="field_legalSurvey">Legal Survey</label>
+          <select class="form-control" id="field_legalSurvey" data-cy="legalSurvey" name="legalSurvey" formControlName="legalSurvey">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                legalSurveyOption.id === editForm.get('legalSurvey')!.value?.id ? editForm.get('legalSurvey')!.value : legalSurveyOption
+              "
+              *ngFor="let legalSurveyOption of legalSurveysSharedCollection; trackBy: trackLegalSurveyById"
+            >
+              {{ legalSurveyOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.refugee.medicalSurvey" for="field_medicalSurvey">Medical Survey</label>
+          <select
+            class="form-control"
+            id="field_medicalSurvey"
+            data-cy="medicalSurvey"
+            name="medicalSurvey"
+            formControlName="medicalSurvey"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                medicalSurveyOption.id === editForm.get('medicalSurvey')!.value?.id
+                  ? editForm.get('medicalSurvey')!.value
+                  : medicalSurveyOption
+              "
+              *ngFor="let medicalSurveyOption of medicalSurveysSharedCollection; trackBy: trackMedicalSurveyById"
+            >
+              {{ medicalSurveyOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

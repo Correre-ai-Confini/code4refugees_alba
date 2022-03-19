@@ -1,0 +1,32 @@
+{
+  "albatestApp": {
+    "attachment": {
+      "home": {
+        "title": "Attachments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Attachment",
+        "createOrEditLabel": "Створити чи редагувати Attachment",
+        "notFound": "No Attachments found"
+      },
+      "created": "Новий Attachment створений з ідентифікатором {{ param }}",
+      "updated": "Attachment оновлений з ідентифікатором {{ param }}",
+      "deleted": "Attachment видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Attachment {{ id }}?"
+      },
+      "detail": {
+        "title": "Attachment"
+      },
+      "id": "ID",
+      "description": "Description",
+      "creationTS": "Creation TS",
+      "name": "Name",
+      "contentBlob": "Content Blob",
+      "contentType": "Content Type",
+      "category": "Category",
+      "refugee": "Refugee",
+      "creator": "Creator",
+      "originalRegistrationRecord": "Original Registration Record"
+    }
+  }
+}

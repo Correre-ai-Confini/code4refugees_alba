@@ -1,0 +1,142 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-event-heading" data-cy="EventCreateUpdateHeading" jhiTranslate="albatestApp.event.home.createOrEditLabel">
+        Create or edit a Event
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.notes" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.timestamp" for="field_timestamp">Timestamp</label>
+          <div class="d-flex">
+            <input
+              id="field_timestamp"
+              data-cy="timestamp"
+              type="datetime-local"
+              class="form-control"
+              name="timestamp"
+              formControlName="timestamp"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.urgencyOfMedicalTreatment" for="field_urgencyOfMedicalTreatment"
+            >Urgency Of Medical Treatment</label
+          >
+          <select
+            class="form-control"
+            name="urgencyOfMedicalTreatment"
+            formControlName="urgencyOfMedicalTreatment"
+            id="field_urgencyOfMedicalTreatment"
+            data-cy="urgencyOfMedicalTreatment"
+          >
+            <option [ngValue]="null">{{ 'albatestApp.TreatmentPriority.null' | translate }}</option>
+            <option *ngFor="let treatmentPriority of treatmentPriorityValues" [value]="treatmentPriority">
+              {{ 'albatestApp.TreatmentPriority.' + treatmentPriority | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.needForLegalAssistance" for="field_needForLegalAssistance"
+            >Need For Legal Assistance</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="needForLegalAssistance"
+            id="field_needForLegalAssistance"
+            data-cy="needForLegalAssistance"
+            formControlName="needForLegalAssistance"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.category" for="field_category">Category</label>
+          <select class="form-control" id="field_category" data-cy="category" name="category" formControlName="category">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="eventTypeOption.id === editForm.get('category')!.value?.id ? editForm.get('category')!.value : eventTypeOption"
+              *ngFor="let eventTypeOption of categoriesCollection; trackBy: trackEventTypeById"
+            >
+              {{ eventTypeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.checkPoint" for="field_checkPoint">Check Point</label>
+          <select class="form-control" id="field_checkPoint" data-cy="checkPoint" name="checkPoint" formControlName="checkPoint">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                checkPointOption.id === editForm.get('checkPoint')!.value?.id ? editForm.get('checkPoint')!.value : checkPointOption
+              "
+              *ngFor="let checkPointOption of checkPointsCollection; trackBy: trackCheckPointById"
+            >
+              {{ checkPointOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.operator" for="field_operator">Operator</label>
+          <select class="form-control" id="field_operator" data-cy="operator" name="operator" formControlName="operator">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="operatorOption.id === editForm.get('operator')!.value?.id ? editForm.get('operator')!.value : operatorOption"
+              *ngFor="let operatorOption of operatorsCollection; trackBy: trackOperatorById"
+            >
+              {{ operatorOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="albatestApp.event.registration" for="field_registration">Registration</label>
+          <select class="form-control" id="field_registration" data-cy="registration" name="registration" formControlName="registration">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                registrationOption.id === editForm.get('registration')!.value?.id ? editForm.get('registration')!.value : registrationOption
+              "
+              *ngFor="let registrationOption of registrationsSharedCollection; trackBy: trackRegistrationById"
+            >
+              {{ registrationOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

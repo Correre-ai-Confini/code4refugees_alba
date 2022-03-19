@@ -1,0 +1,28 @@
+{
+  "albatestApp": {
+    "location": {
+      "home": {
+        "title": "Locations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Створити новий Location",
+        "createOrEditLabel": "Створити чи редагувати Location",
+        "notFound": "No Locations found"
+      },
+      "created": "Новий Location створений з ідентифікатором {{ param }}",
+      "updated": "Location оновлений з ідентифікатором {{ param }}",
+      "deleted": "Location видалений з ідентифікатором {{ param }}",
+      "delete": {
+        "question": "Ви впевнені, що хочете видалити Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Location"
+      },
+      "id": "ID",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "country": "Country"
+    }
+  }
+}

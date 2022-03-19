@@ -1,0 +1,34 @@
+{
+  "albatestApp": {
+    "refugee": {
+      "home": {
+        "title": "Refugees",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Refugee",
+        "createOrEditLabel": "Создать или отредактировать Refugee",
+        "notFound": "Refugees не найдено"
+      },
+      "created": "Новый Refugee создан с идентификатором {{ param }}",
+      "updated": "Refugee обновлен с идентификатором {{ param }}",
+      "deleted": "Refugee удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Refugee {{ id }}?"
+      },
+      "detail": {
+        "title": "Refugee"
+      },
+      "id": "ID",
+      "qrcodeUUID": "Qrcode UUID",
+      "educationalLevel": "Educational Level",
+      "mandatoryTutored": "Mandatory Tutored",
+      "birthDate": "Birth Date",
+      "disabledPerson": "Disabled Person",
+      "religion": "Religion",
+      "gender": "Gender",
+      "personalInformation": "Personal Information",
+      "primaryOccupation": "Primary Occupation",
+      "legalSurvey": "Legal Survey",
+      "medicalSurvey": "Medical Survey"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "albatestApp": {
+    "event": {
+      "home": {
+        "title": "Events",
+        "refreshListLabel": "Обновить список",
+        "createLabel": "Создать новый Event",
+        "createOrEditLabel": "Создать или отредактировать Event",
+        "notFound": "Events не найдено"
+      },
+      "created": "Новый Event создан с идентификатором {{ param }}",
+      "updated": "Event обновлен с идентификатором {{ param }}",
+      "deleted": "Event удален с идентификатором {{ param }}",
+      "delete": {
+        "question": "Вы уверены что хотите удалить Event {{ id }}?"
+      },
+      "detail": {
+        "title": "Event"
+      },
+      "id": "ID",
+      "notes": "Notes",
+      "timestamp": "Timestamp",
+      "urgencyOfMedicalTreatment": "Urgency Of Medical Treatment",
+      "needForLegalAssistance": "Need For Legal Assistance",
+      "category": "Category",
+      "checkPoint": "Check Point",
+      "operator": "Operator",
+      "registration": "Registration"
+    }
+  }
+}

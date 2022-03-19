@@ -1,0 +1,13 @@
+{
+  "albatestApp": {
+    "ContentType": {
+      "null": "",
+      "BLOB": "BLOB",
+      "TEXT": "TEXT",
+      "CURRENCY": "CURRENCY",
+      "DATE": "DATE",
+      "TIME": "TIME",
+      "NUMBER": "NUMBER"
+    }
+  }
+}

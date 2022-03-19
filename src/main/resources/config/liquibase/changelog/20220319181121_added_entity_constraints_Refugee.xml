@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Refugee.
+    -->
+    <changeSet id="20220319181121-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="personal_information_id"
+                                 baseTableName="refugee"
+                                 constraintName="fk_refugee__personal_information_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+
+        <addForeignKeyConstraint baseColumnNames="primary_occupation_id"
+                                 baseTableName="refugee"
+                                 constraintName="fk_refugee__primary_occupation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="job"/>
+
+        <addForeignKeyConstraint baseColumnNames="legal_survey_id"
+                                 baseTableName="refugee"
+                                 constraintName="fk_refugee__legal_survey_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="legal_survey"/>
+
+        <addForeignKeyConstraint baseColumnNames="medical_survey_id"
+                                 baseTableName="refugee"
+                                 constraintName="fk_refugee__medical_survey_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medical_survey"/>
+    </changeSet>
+</databaseChangeLog>

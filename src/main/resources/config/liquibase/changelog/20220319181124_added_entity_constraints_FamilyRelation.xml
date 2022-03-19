@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity FamilyRelation.
+    -->
+    <changeSet id="20220319181124-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="refugee1_id"
+                                 baseTableName="family_relation"
+                                 constraintName="fk_family_relation__refugee1_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="refugee"/>
+
+        <addForeignKeyConstraint baseColumnNames="refugee2_id"
+                                 baseTableName="family_relation"
+                                 constraintName="fk_family_relation__refugee2_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="refugee"/>
+    </changeSet>
+</databaseChangeLog>
