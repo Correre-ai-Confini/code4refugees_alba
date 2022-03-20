@@ -29,6 +29,10 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
         },
         {
+          path: 'scan',
+          loadChildren: () => import('./qrscan/qrscan.module').then(m => m.QrScanModule),
+        },
+        {
           path: '',
           loadChildren: () => import(`./entities/entity-routing.module`).then(m => m.EntityRoutingModule),
         },

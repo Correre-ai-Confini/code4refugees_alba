@@ -29,6 +29,21 @@
         </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
         <li
+          *jhiHasAnyAuthority="'ROLE_ADMIN'"
+          ngbDropdown
+          class="pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link" routerLink="/scan">
+            <span>
+              <fa-icon icon="eye"></fa-icon>
+              <span>Scan</span>
+            </span>
+          </a>
+        </li>
+        <li
           *ngSwitchCase="true"
           ngbDropdown
           class="nav-item dropdown pointer"
