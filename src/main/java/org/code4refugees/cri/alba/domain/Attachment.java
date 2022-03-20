@@ -48,11 +48,11 @@ public class Attachment implements Serializable {
     private AttachmentCategory category;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "personalInformation", "primaryOccupation", "legalSurvey", "medicalSurvey" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "primaryOccupation", "legalSurvey", "medicalSurvey" }, allowSetters = true)
     private Refugee refugee;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "personalInformation" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { }, allowSetters = true)
     private Operator creator;
 
     @ManyToOne

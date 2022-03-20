@@ -57,17 +57,17 @@
           <td>{{ event.needForLegalAssistance }}</td>
           <td>
             <div *ngIf="event.category">
-              <a [routerLink]="['/event-type', event.category?.id, 'view']">{{ event.category?.id }}</a>
+              <a [routerLink]="['/event-type', event.category?.id, 'view']">{{ event.category?.description }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="event.checkPoint">
-              <a [routerLink]="['/check-point', event.checkPoint?.id, 'view']">{{ event.checkPoint?.id }}</a>
+              <a [routerLink]="['/check-point', event.checkPoint?.id, 'view']">{{ event.checkPoint?.friendlyname }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="event.operator">
-              <a [routerLink]="['/operator', event.operator?.id, 'view']">{{ event.operator?.id }}</a>
+              <a [routerLink]="['/operator', event.operator?.id, 'view']">{{ event.operator?.personalInformation?.firstName }} {{ event.operator?.personalInformation?.firstName }}</a>
             </div>
           </td>
           <td>
