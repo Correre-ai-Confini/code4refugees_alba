@@ -11,5 +11,5 @@ public class FreshRegistrationDTO {
     Registration registration;
     Event event;
     Refugee refugee;
-    Person refugeePerson;
+    Person person;
 }

@@ -129,7 +129,7 @@ public class FirstRegistrationResource {
 
     private Person savePerson(FreshRegistrationDTO registrationRequest) {
         Person person = new Person();
-        BeanUtils.copyProperties(registrationRequest.getRefugeePerson(), person, "id", "comingFrom");
+        BeanUtils.copyProperties(registrationRequest.getPerson(), person, "id", "comingFrom");
 
         Person result = personRepository.save(person);
         return result;
