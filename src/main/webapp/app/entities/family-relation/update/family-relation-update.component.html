@@ -40,7 +40,11 @@
               [ngValue]="refugeeOption.id === editForm.get('refugee1')!.value?.id ? editForm.get('refugee1')!.value : refugeeOption"
               *ngFor="let refugeeOption of refugeesSharedCollection; trackBy: trackRefugeeById"
             >
-              {{ refugeeOption.personalInformation?.firstName }} {{ refugeeOption.personalInformation?.lastName }}
+              {{
+                (refugeeOption.personalInformation?.firstName || refugeeOption.personalInformation?.lastName)
+                ? refugeeOption.personalInformation?.firstName + ' ' + refugeeOption.personalInformation?.lastName
+                : refugeeOption.personalInformation?.id
+              }}
             </option>
           </select>
         </div>
@@ -53,7 +57,11 @@
               [ngValue]="refugeeOption.id === editForm.get('refugee2')!.value?.id ? editForm.get('refugee2')!.value : refugeeOption"
               *ngFor="let refugeeOption of refugeesSharedCollection; trackBy: trackRefugeeById"
             >
-              {{ refugeeOption.personalInformation?.firstName }} {{ refugeeOption.personalInformation?.lastName }}
+              {{
+                (refugeeOption.personalInformation?.firstName)
+                ? refugeeOption.personalInformation?.firstName + ' ' + refugeeOption.personalInformation?.lastName
+                : refugeeOption.personalInformation?.id
+              }}
             </option>
           </select>
         </div>
