@@ -1,9 +1,10 @@
 import { HttpResponse } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from "@techiediaries/ngx-qrcode";
 import { Observable } from "rxjs";
-import { finalize, map } from "rxjs/operators";
+import { finalize, map, shareReplay } from "rxjs/operators";
 import { ICheckPoint } from "../../check-point/check-point.model";
 import { CheckPointService } from "../../check-point/service/check-point.service";
 import { IEventType } from "../../event-type/event-type.model";
@@ -27,6 +28,15 @@ import { FirstRegistrationService } from "../service/first-registration.service"
 
 @Component ({
   selector: "jhi-first-registration-new",
+  styles: [
+    `
+			::ng-deep .aclass {
+				display:         flex;
+				justify-content: center;
+				height:          300px;
+			}
+    `
+  ],
   templateUrl: "./first-registration-new.component.html"
 })
 export class FirstRegistrationNewComponent implements OnInit {
@@ -67,7 +77,8 @@ export class FirstRegistrationNewComponent implements OnInit {
     secondSpokenLanguage: [],
     comingFrom: []
   });
-  
+  NgxQrcodeElementTypes = NgxQrcodeElementTypes;
+  NgxQrcodeErrorCorrectionLevels = NgxQrcodeErrorCorrectionLevels;
   refugeeForm = this.fb.group ({
     id: [],
     qrcodeUUID: [],
@@ -89,12 +100,18 @@ export class FirstRegistrationNewComponent implements OnInit {
     urgencyOfMedicalTreatment: [],
     needForLegalAssistance: [],
     category: [],
-    checkPoint: []
+    checkPoint: [Validators.required]
   });
-  // qrcode$ = this.firstRegistrationService.getUUid$ ().pipe (shareReplay());
+  qrcode$ = this.firstRegistrationService.getNewQrcode ()
+  .pipe (shareReplay ());
   
   ngOnInit (): void {
     this.loadRelationshipsOptions ();
+    this.qrcode$.subscribe ((uuid) => {
+      console.log (uuid);
+      this.refugeeForm.get ("qrcodeUUID")
+      ?.patchValue (uuid);
+    });
     this.refugeeForm.get ("qrcodeUUID")
     ?.disable ();
   }
@@ -106,7 +123,7 @@ export class FirstRegistrationNewComponent implements OnInit {
   save (): void {
     this.isSaving = true;
     const firstRegistration = this.createFromForm ();
-    // this.subscribeToSaveResponse(this.firstRegistrationService.create(firstRegistration)); // TODO
+    this.subscribeToSaveResponse (this.firstRegistrationService.create (firstRegistration)); // TODO
   }
   
   protected subscribeToSaveResponse (result: Observable<HttpResponse<IFirstRegistration>>): void {
@@ -188,9 +205,9 @@ export class FirstRegistrationNewComponent implements OnInit {
   
   protected createFromForm (): IFirstRegistration {
     return {
-      event: {},
-      person: {},
-      refugee: {},
+      event: this.eventForm.getRawValue (),
+      person: this.personForm.getRawValue (),
+      refugee: this.refugeeForm.getRawValue (),
       registration: {}
     };
   }

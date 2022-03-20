@@ -128,7 +128,7 @@
               "
             *ngFor="let jobOption of jobsSharedCollection; trackBy: trackJobById"
         >
-          {{ jobOption.id }}
+          {{ jobOption.jobTitle }}
         </option>
       </select>
     </div>
@@ -142,7 +142,7 @@
               "
             *ngFor="let legalSurveyOption of legalSurveysSharedCollection; trackBy: trackLegalSurveyById"
         >
-          {{ legalSurveyOption.id }}
+          {{ legalSurveyOption.issues }}
         </option>
       </select>
     </div>
@@ -164,7 +164,7 @@
               "
             *ngFor="let medicalSurveyOption of medicalSurveysSharedCollection; trackBy: trackMedicalSurveyById"
         >
-          {{ medicalSurveyOption.id }}
+          {{ medicalSurveyOption.ongoingIllnesses }}
         </option>
       </select>
     </div>

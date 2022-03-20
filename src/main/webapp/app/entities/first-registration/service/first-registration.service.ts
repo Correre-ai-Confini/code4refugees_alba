@@ -9,7 +9,7 @@ export type EntityArrayResponseType = HttpResponse<IFirstRegistration[]>;
 
 @Injectable ({ providedIn: "root" })
 export class FirstRegistrationService {
-  protected resourceUrl = this.applicationConfigService.getEndpointFor ("api/attachment-categories");
+  protected resourceUrl = this.applicationConfigService.getEndpointFor ("api/checkpoint-client/register");
   
   constructor (protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
   
@@ -17,8 +17,8 @@ export class FirstRegistrationService {
     return this.http.post<IFirstRegistration> (this.resourceUrl, firstRegistration, { observe: "response" });
   }
   
-  find (id: number): Observable<EntityResponseType> {
-    return this.http.get<IFirstRegistration> (`${ this.resourceUrl }/${ id }`, { observe: "response" });
+  getNewQrcode (): Observable<string> {
+    return this.http.get<string> (`${ this.resourceUrl }`, { observe: "body", responseType: "text" as any });
   }
   
 }
