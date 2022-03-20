@@ -178,7 +178,7 @@ public class RefugeeResource {
     }
 
     /**
-     * {@code GET  /refugees/:id} : get the "id" refugee.
+     * {@code GET  /refugees/by-uuid/:uuid} : get the "uuid" refugee.
      *
      * @param uuid the QrCodeUUID of the refugee to retrieve.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the refugee, or with status {@code 404 (Not Found)}.
