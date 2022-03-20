@@ -178,6 +178,20 @@ public class RefugeeResource {
     }
 
     /**
+     * {@code GET  /refugees/:id} : get the "id" refugee.
+     *
+     * @param uuid the QrCodeUUID of the refugee to retrieve.
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the refugee, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/refugees/by-uuid/{uuid}")
+    public ResponseEntity<Refugee> getRefugeeByUUID(@PathVariable String uuid) {
+        log.debug("REST request to get Refugee by UUID: {}", uuid);
+        Optional<Refugee> refugee = refugeeRepository.findFirstByQrcodeUUID(uuid);
+        return ResponseUtil.wrapOrNotFound(refugee);
+    }
+
+
+    /**
      * {@code DELETE  /refugees/:id} : delete the "id" refugee.
      *
      * @param id the id of the refugee to delete.
