@@ -25,7 +25,7 @@
         <dt><span jhiTranslate="albatestApp.medicalSurvey.attachment">Attachment</span></dt>
         <dd>
           <div *ngIf="medicalSurvey.attachment">
-            <a [routerLink]="['/attachment', medicalSurvey.attachment?.id, 'view']">{{ medicalSurvey.attachment?.id }}</a>
+            <a [routerLink]="['/attachment', medicalSurvey.attachment?.id, 'view']">{{ medicalSurvey.attachment?.description }}</a>
           </div>
         </dd>
       </dl>
