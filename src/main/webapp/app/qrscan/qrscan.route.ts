@@ -6,6 +6,6 @@ export const QR_ROUTE: Route = {
   path: '',
   component: QrScanComponent,
   data: {
-    pageTitle: 'SCAN',
+    pageTitle: 'scan.title',
   },
 };
