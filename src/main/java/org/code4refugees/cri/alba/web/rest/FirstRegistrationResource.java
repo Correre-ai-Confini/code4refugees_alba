@@ -95,10 +95,22 @@ public class FirstRegistrationResource {
         if (registrationRequestEvent == null) throw new RuntimeException("Cannot register without an event: found null");
 
         Operator registrationRequestEventOperator = registrationRequestEvent.getOperator();
-        if (registrationRequestEventOperator == null) throw new RuntimeException("Cannot register without an operator: found null");
+        //TODO USE A CLAIM in JWT
+        if (registrationRequestEventOperator == null) {
+            registrationRequestEventOperator = new Operator();
+            registrationRequestEventOperator.setId(1L);
+        }
 
-        CheckPoint registrationRequestEventCheckPoint = registrationRequest.getEvent().getCheckPoint();
-        if (registrationRequestEventCheckPoint == null) throw new RuntimeException("Cannot register without a checkpoint: found null");
+//        if (registrationRequestEventOperator == null) throw new RuntimeException("Cannot register without an operator: found null");
+
+        CheckPoint registrationRequestEventCheckPoint = registrationRequestEvent.getCheckPoint();
+//        if (registrationRequestEventCheckPoint == null) throw new RuntimeException("Cannot register without a checkpoint: found null");
+        //TODO USE A CLAIM in JWT
+        if (registrationRequestEventCheckPoint == null) {
+            registrationRequestEventCheckPoint = new CheckPoint();
+            registrationRequestEventCheckPoint.setId(1L);
+        }
+
 
         operatorRepository.findById(registrationRequestEventOperator.getId()).ifPresent(event::setOperator);
         checkPointRepository.findById(registrationRequestEventCheckPoint.getId()).ifPresent(event::setCheckPoint);
