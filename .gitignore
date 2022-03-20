@@ -50,3 +50,7 @@ alba-fe/.angular/
 alba-fe/.idea/
 
 alba-fe/.vscode/
+
+build/
+
+.gradle/

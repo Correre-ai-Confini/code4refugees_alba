@@ -1,14 +1,14 @@
-import { NgModule } from '@angular/core';
-import { SharedModule } from 'app/shared/shared.module';
-import { PersonComponent } from './list/person.component';
-import { PersonDetailComponent } from './detail/person-detail.component';
-import { PersonUpdateComponent } from './update/person-update.component';
-import { PersonDeleteDialogComponent } from './delete/person-delete-dialog.component';
-import { PersonRoutingModule } from './route/person-routing.module';
+import { NgModule } from "@angular/core";
+import { SharedModule } from "app/shared/shared.module";
+import { PersonDeleteDialogComponent } from "./delete/person-delete-dialog.component";
+import { PersonDetailComponent } from "./detail/person-detail.component";
+import { PersonComponent } from "./list/person.component";
+import { PersonRoutingModule } from "./route/person-routing.module";
+import { PersonUpdateComponent } from "./update/person-update.component";
 
-@NgModule({
+@NgModule ({
   imports: [SharedModule, PersonRoutingModule],
   declarations: [PersonComponent, PersonDetailComponent, PersonUpdateComponent, PersonDeleteDialogComponent],
-  entryComponents: [PersonDeleteDialogComponent],
+  entryComponents: [PersonDeleteDialogComponent]
 })
 export class PersonModule {}
