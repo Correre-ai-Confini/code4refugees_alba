@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { BarcodeFormat } from '@zxing/library';
 import { IRefugee } from 'app/entities/refugee/refugee.model';
 import { RefugeeService } from 'app/entities/refugee/service/refugee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'qrscan',
@@ -16,7 +17,7 @@ export class QrScanComponent {
   allowedFormats = [ BarcodeFormat.QR_CODE, BarcodeFormat.EAN_13, BarcodeFormat.CODE_128, BarcodeFormat.DATA_MATRIX ];
   scannerEnabled: boolean = true;
 
-  constructor(protected refugeeService: RefugeeService) {}
+  constructor(protected refugeeService: RefugeeService, private router: Router) {}
 
   findQR(qrcodeUUID: IRefugee['qrcodeUUID']): void {
     this.isLoading = true;
@@ -24,7 +25,7 @@ export class QrScanComponent {
       next: (res: HttpResponse<IRefugee>) => {
         const id = res.body!['id'];
         this.match = id;
-        console.log(this.match);
+        this.router.navigate([`/refugee/${id}/view`])
         this.isLoading = false;
       },
       error: () => {
