@@ -57,3 +57,5 @@ alba-fe/.vscode/
 build/
 
 .gradle/
+
+package-lock.json
