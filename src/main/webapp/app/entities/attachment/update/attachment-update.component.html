@@ -113,7 +113,7 @@
               "
               *ngFor="let attachmentCategoryOption of attachmentCategoriesSharedCollection; trackBy: trackAttachmentCategoryById"
             >
-              {{ attachmentCategoryOption.id }}
+              {{ attachmentCategoryOption.description }}
             </option>
           </select>
         </div>
@@ -126,7 +126,7 @@
               [ngValue]="refugeeOption.id === editForm.get('refugee')!.value?.id ? editForm.get('refugee')!.value : refugeeOption"
               *ngFor="let refugeeOption of refugeesSharedCollection; trackBy: trackRefugeeById"
             >
-              {{ refugeeOption.id }}
+              {{ refugeeOption.qrcodeUUID }}
             </option>
           </select>
         </div>
@@ -164,7 +164,7 @@
               "
               *ngFor="let eventOption of eventsSharedCollection; trackBy: trackEventById"
             >
-              {{ eventOption.id }}
+              {{ eventOption.notes }}
             </option>
           </select>
         </div>
