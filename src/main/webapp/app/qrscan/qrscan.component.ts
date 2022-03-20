@@ -29,7 +29,7 @@ export class QrScanComponent {
         this.isLoading = false;
       },
       error: () => {
-        console.log('No match.');
+        this.scannedQr = 'No match.';
         this.isLoading = false;
       },
     });
