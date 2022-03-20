@@ -21,7 +21,7 @@
         <dt><span jhiTranslate="albatestApp.checkPoint.location">Location</span></dt>
         <dd>
           <div *ngIf="checkPoint.location">
-            <a [routerLink]="['/location', checkPoint.location?.id, 'view']">{{ checkPoint.location?.city }}</a>
+            <a [routerLink]="['/location', checkPoint.location?.id, 'view']">{{ checkPoint.location?.id }}</a>
           </div>
         </dd>
       </dl>

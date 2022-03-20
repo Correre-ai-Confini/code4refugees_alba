@@ -48,7 +48,7 @@
           <td>{{ legalSurvey.issues }}</td>
           <td>
             <div *ngIf="legalSurvey.attachment">
-              <a [routerLink]="['/attachment', legalSurvey.attachment?.id, 'view']">{{ legalSurvey.attachment?.description }}</a>
+              <a [routerLink]="['/attachment', legalSurvey.attachment?.id, 'view']">{{ legalSurvey.attachment?.id }}</a>
             </div>
           </td>
           <td class="text-end">

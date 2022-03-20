@@ -48,7 +48,7 @@ public class Event implements Serializable {
     @JoinColumn(unique = true)
     private CheckPoint checkPoint;
 
-    @JsonIgnoreProperties(allowSetters = true)
+    @JsonIgnoreProperties(value = { "personalInformation" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
     private Operator operator;

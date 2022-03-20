@@ -21,7 +21,7 @@
         <dt><span jhiTranslate="albatestApp.country.region">Region</span></dt>
         <dd>
           <div *ngIf="country.region">
-            <a [routerLink]="['/region', country.region?.id, 'view']">{{ country.region?.regionName }}</a>
+            <a [routerLink]="['/region', country.region?.id, 'view']">{{ country.region?.id }}</a>
           </div>
         </dd>
       </dl>

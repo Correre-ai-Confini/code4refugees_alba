@@ -35,19 +35,19 @@
         <dt><span jhiTranslate="albatestApp.event.category">Category</span></dt>
         <dd>
           <div *ngIf="event.category">
-            <a [routerLink]="['/event-type', event.category?.id, 'view']">{{ event.category?.description }}</a>
+            <a [routerLink]="['/event-type', event.category?.id, 'view']">{{ event.category?.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="albatestApp.event.checkPoint">Check Point</span></dt>
         <dd>
           <div *ngIf="event.checkPoint">
-            <a [routerLink]="['/check-point', event.checkPoint?.id, 'view']">{{ event.checkPoint?.friendlyname }}</a>
+            <a [routerLink]="['/check-point', event.checkPoint?.id, 'view']">{{ event.checkPoint?.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="albatestApp.event.operator">Operator</span></dt>
         <dd>
           <div *ngIf="event.operator">
-            <a [routerLink]="['/operator', event.operator?.id, 'view']">{{ event.operator?.personalInformation?.firstName }} {{ event.operator?.personalInformation?.lastName }}</a>
+            <a [routerLink]="['/operator', event.operator?.id, 'view']">{{ event.operator?.id }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="albatestApp.event.registration">Registration</span></dt>
