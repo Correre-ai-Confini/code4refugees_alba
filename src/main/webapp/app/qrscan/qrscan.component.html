@@ -1,0 +1,13 @@
+<div class="row">
+    <h2>Scan QR Code</h2>
+    <div class="text-center">
+        <zxing-scanner 
+            [formats]="allowedFormats"
+            class="scanner" 
+            *ngIf="scannerEnabled" #scanner (scanSuccess)="scanSuccessHandler($event)"
+        >
+        </zxing-scanner>
+        <p *ngIf="scannedQr !== ''">{{ scannedQr }}</p>
+        <button class="btn btn-primary text-white" *ngIf="!scannerEnabled" (click)="enableScanner()">Scan</button>
+    </div>
+</div>
