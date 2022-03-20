@@ -46,6 +46,11 @@ export class RefugeeService {
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
   }
 
+  findByUUID(uuid: string): Observable<EntityResponseType> {
+    return this.http
+      .get<IRefugee>(`${this.resourceUrl}/by-uuid/${uuid}`, { observe: 'response' })
+      .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
     return this.http
