@@ -18,6 +18,7 @@ import { FamilyRelationType } from 'app/entities/enumerations/family-relation-ty
 export class FamilyRelationUpdateComponent implements OnInit {
   isSaving = false;
   familyRelationTypeValues = Object.keys(FamilyRelationType);
+  
 
   refugeesSharedCollection: IRefugee[] = [];
 
@@ -39,7 +40,7 @@ export class FamilyRelationUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ familyRelation }) => {
       this.updateForm(familyRelation);
-
+      
       this.loadRelationshipsOptions();
     });
   }
