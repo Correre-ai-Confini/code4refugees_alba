@@ -33,7 +33,7 @@
               [ngValue]="regionOption.id === editForm.get('region')!.value?.id ? editForm.get('region')!.value : regionOption"
               *ngFor="let regionOption of regionsCollection; trackBy: trackRegionById"
             >
-              {{ regionOption.id }}
+              {{ regionOption.regionName }}
             </option>
           </select>
         </div>
