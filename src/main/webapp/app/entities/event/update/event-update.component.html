@@ -73,7 +73,7 @@
               [ngValue]="eventTypeOption.id === editForm.get('category')!.value?.id ? editForm.get('category')!.value : eventTypeOption"
               *ngFor="let eventTypeOption of categoriesCollection; trackBy: trackEventTypeById"
             >
-              {{ eventTypeOption.id }}
+              {{ eventTypeOption.description }}
             </option>
           </select>
         </div>
@@ -88,7 +88,7 @@
               "
               *ngFor="let checkPointOption of checkPointsCollection; trackBy: trackCheckPointById"
             >
-              {{ checkPointOption.id }}
+              {{ checkPointOption.friendlyname }}
             </option>
           </select>
         </div>
@@ -101,7 +101,7 @@
               [ngValue]="operatorOption.id === editForm.get('operator')!.value?.id ? editForm.get('operator')!.value : operatorOption"
               *ngFor="let operatorOption of operatorsCollection; trackBy: trackOperatorById"
             >
-              {{ operatorOption.id }}
+              {{ operatorOption.personalInformation?.firstName }} {{ operatorOption.personalInformation?.lastName }}
             </option>
           </select>
         </div>

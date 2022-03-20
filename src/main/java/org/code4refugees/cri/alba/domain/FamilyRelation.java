@@ -31,11 +31,11 @@ public class FamilyRelation implements Serializable {
     private FamilyRelationType relType;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "personalInformation", "primaryOccupation", "legalSurvey", "medicalSurvey" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "primaryOccupation", "legalSurvey", "medicalSurvey" }, allowSetters = true)
     private Refugee refugee1;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = { "personalInformation", "primaryOccupation", "legalSurvey", "medicalSurvey" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "primaryOccupation", "legalSurvey", "medicalSurvey" }, allowSetters = true)
     private Refugee refugee2;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
