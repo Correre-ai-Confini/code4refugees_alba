@@ -22,9 +22,9 @@ module.exports = async (config, options, targetOptions) => {
   // PLUGINS
   if (config.mode === 'development') {
     config.plugins.push(
-      new ESLintPlugin({
-        extensions: ['js', 'ts'],
-      }),
+      // new ESLintPlugin({
+      //   extensions: ['js', 'ts'],
+      // }),
       new WebpackNotifierPlugin({
         title: 'Albatest',
         contentImage: path.join(__dirname, 'logo-jhipster.png'),

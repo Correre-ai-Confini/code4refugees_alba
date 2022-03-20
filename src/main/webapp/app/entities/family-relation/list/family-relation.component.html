@@ -49,12 +49,12 @@
           <td jhiTranslate="{{ 'albatestApp.FamilyRelationType.' + familyRelation.relType }}">{{ familyRelation.relType }}</td>
           <td>
             <div *ngIf="familyRelation.refugee1">
-              <a [routerLink]="['/refugee', familyRelation.refugee1?.id, 'view']">{{ familyRelation.refugee1?.id }}</a>
+              <a [routerLink]="['/refugee', familyRelation.refugee1?.id, 'view']">{{ familyRelation.refugee1?.personalInformation?.firstName }} {{ familyRelation.refugee1?.personalInformation?.lastName }}</a>
             </div>
           </td>
           <td>
             <div *ngIf="familyRelation.refugee2">
-              <a [routerLink]="['/refugee', familyRelation.refugee2?.id, 'view']">{{ familyRelation.refugee2?.id }}</a>
+              <a [routerLink]="['/refugee', familyRelation.refugee2?.id, 'view']">{{ familyRelation.refugee2?.personalInformation?.firstName }} {{ familyRelation.refugee2?.personalInformation?.lastName }}</a>
             </div>
           </td>
           <td class="text-end">

@@ -40,13 +40,13 @@
         <dt><span jhiTranslate="albatestApp.attachment.category">Category</span></dt>
         <dd>
           <div *ngIf="attachment.category">
-            <a [routerLink]="['/attachment-category', attachment.category?.id, 'view']">{{ attachment.category?.id }}</a>
+            <a [routerLink]="['/attachment-category', attachment.category?.id, 'view']">{{ attachment.category?.description}}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="albatestApp.attachment.refugee">Refugee</span></dt>
         <dd>
           <div *ngIf="attachment.refugee">
-            <a [routerLink]="['/refugee', attachment.refugee?.id, 'view']">{{ attachment.refugee?.id }}</a>
+            <a [routerLink]="['/refugee', attachment.refugee?.id, 'view']">{{ attachment.refugee?.qrcodeUUID }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="albatestApp.attachment.creator">Creator</span></dt>
@@ -59,7 +59,7 @@
         <dd>
           <div *ngIf="attachment.originalRegistrationRecord">
             <a [routerLink]="['/event', attachment.originalRegistrationRecord?.id, 'view']">{{
-              attachment.originalRegistrationRecord?.id
+              attachment.originalRegistrationRecord?.notes
             }}</a>
           </div>
         </dd>

@@ -44,7 +44,7 @@
               [ngValue]="locationOption.id === editForm.get('location')!.value?.id ? editForm.get('location')!.value : locationOption"
               *ngFor="let locationOption of locationsCollection; trackBy: trackLocationById"
             >
-              {{ locationOption.id }}
+              {{ locationOption.city }}
             </option>
           </select>
         </div>
