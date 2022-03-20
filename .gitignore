@@ -4,6 +4,9 @@
 dist
 tmp
 out-tsc
+build
+bin
+.gradle
 # Only exists if Bazel was run
 /bazel-out
 
