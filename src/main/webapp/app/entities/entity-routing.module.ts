@@ -60,6 +60,11 @@ import { RouterModule } from '@angular/router';
         loadChildren: () => import('./person/person.module').then(m => m.PersonModule),
       },
       {
+        path: 'first-registration',
+        data: { pageTitle: 'albatestApp.first-registration.new.title' },
+        loadChildren: () => import('./first-registration/first-registration.module').then(m => m.FirstRegistrationModule),
+      },
+      {
         path: 'job',
         data: { pageTitle: 'albatestApp.job.home.title' },
         loadChildren: () => import('./job/job.module').then(m => m.JobModule),

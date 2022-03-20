@@ -8,6 +8,7 @@ import java.util.Set;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.annotation.CreatedDate;
 
 /**
  * A Registration.
@@ -28,6 +29,7 @@ public class Registration implements Serializable {
     @Column(name = "notes")
     private String notes;
 
+    @CreatedDate
     @Column(name = "timestamp")
     private ZonedDateTime timestamp;
 

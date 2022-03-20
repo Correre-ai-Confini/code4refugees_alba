@@ -10,7 +10,6 @@ import { AttachmentCategoryService } from '../service/attachment-category.servic
 @Injectable({ providedIn: 'root' })
 export class AttachmentCategoryRoutingResolveService implements Resolve<IAttachmentCategory> {
   constructor(protected service: AttachmentCategoryService, protected router: Router) {}
-
   resolve(route: ActivatedRouteSnapshot): Observable<IAttachmentCategory> | Observable<never> {
     const id = route.params['id'];
     if (id) {
@@ -19,6 +18,7 @@ export class AttachmentCategoryRoutingResolveService implements Resolve<IAttachm
           if (attachmentCategory.body) {
             return of(attachmentCategory.body);
           } else {
+            
             this.router.navigate(['404']);
             return EMPTY;
           }

@@ -4,10 +4,12 @@ import org.code4refugees.cri.alba.domain.Event;
 import org.code4refugees.cri.alba.domain.Refugee;
 import org.code4refugees.cri.alba.domain.Registration;
 import org.code4refugees.cri.alba.repository.RegistrationRepository;
+import org.code4refugees.cri.alba.service.dto.FreshRegistrationDTO;
 import org.code4refugees.cri.alba.service.dto.RegistrationDto;
 import org.code4refugees.cri.alba.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +20,7 @@ import tech.jhipster.web.util.ResponseUtil;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * REST controller for managing {@link Registration}.
@@ -59,13 +58,26 @@ public class FirstRegistrationResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/register")
-    public ResponseEntity<Registration> createRegistration(@RequestBody RegistrationDto registrationRequest) throws URISyntaxException {
+    public ResponseEntity<Registration> createRegistration(@RequestBody FreshRegistrationDTO registrationRequest) throws URISyntaxException {
 
         //TODO: MAP
 
         Registration registration = new Registration();
+
+        registration.setNotes(registrationRequest.getRegistration().getNotes());
+        registration.setLegalConsentBlob(registrationRequest.getRegistration().getLegalConsentBlob());
+        registration.setLegalConsentBlobContentType(registrationRequest.getRegistration().getLegalConsentBlobContentType());
+
         Refugee refugee = new Refugee();
+        registration.setRefugee(refugee);
+        BeanUtils.copyProperties(registrationRequest.getRefugee(), refugee, "id", "medicalSurvey", "legalSurvey", "personalInformation");
+
+
         Event event = new Event();
+        registration.setEvents(new HashSet<>());
+        registration.getEvents().add(event);
+
+        BeanUtils.copyProperties(registrationRequest.getEvent(), event);
 
         log.debug("REST request to save Registration : {}", registration);
         if (registration.getId() != null) {

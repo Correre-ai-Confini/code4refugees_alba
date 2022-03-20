@@ -25,13 +25,13 @@
         <dt><span jhiTranslate="albatestApp.familyRelation.refugee1">Refugee 1</span></dt>
         <dd>
           <div *ngIf="familyRelation.refugee1">
-            <a [routerLink]="['/refugee', familyRelation.refugee1?.id, 'view']">{{ familyRelation.refugee1?.personalInformation?.firstName }} {{ familyRelation.refugee1?.personalInformation?.lastName }}</a>
+            <a [routerLink]="['/refugee', familyRelation.refugee1?.id, 'view']">{{ refugee1ViewData }}</a>
           </div>
         </dd>
         <dt><span jhiTranslate="albatestApp.familyRelation.refugee2">Refugee 2</span></dt>
         <dd>
           <div *ngIf="familyRelation.refugee2">
-            <a [routerLink]="['/refugee', familyRelation.refugee2?.id, 'view']">{{ familyRelation.refugee2?.personalInformation?.firstName }} {{ familyRelation.refugee2?.personalInformation?.lastName }}</a>
+            <a [routerLink]="['/refugee', familyRelation.refugee2?.id, 'view']">{{ refugee2ViewData }}</a>
           </div>
         </dd>
       </dl>
