@@ -1,5 +1,8 @@
 <div class="d-flex justify-content-center">
   <div class="col-8">
+    <h2 id="jhi-event-heading" data-cy="EventCreateUpdateHeading" jhiTranslate="albatestApp.event.home.createOrEditLabel">
+      First registration
+    </h2>
     <nav ngbNav #nav="ngbNav" class="nav-tabs">
       <ng-container ngbNavItem>
         <a ngbNavLink>Anagrafica</a>
@@ -27,10 +30,30 @@
       <ng-container ngbNavItem>
         <a ngbNavLink>QRCODE</a>
         <ng-template ngbNavContent>
-          <h1>QRCODE</h1>
+          <ngx-qrcode
+              [elementType]="NgxQrcodeElementTypes.CANVAS"
+              [value]="refugeeForm.get('qrcodeUUID')?.value"
+              cssClass="aclass"
+              [width]="300"
+              [errorCorrectionLevel]="NgxQrcodeErrorCorrectionLevels.LOW">
+          </ngx-qrcode>
         </ng-template>
       </ng-container>
     </nav>
     <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    <div>
+      <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+      </button>
+      <button
+          (click)="save()"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="personForm.invalid || refugeeForm.invalid || eventForm.invalid || isSaving"
+          class="btn btn-primary"
+      >
+        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+      </button>
+    </div>
   </div>
 </div>
