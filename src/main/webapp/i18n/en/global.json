@@ -9,6 +9,7 @@
         "main": "Entities",
         "region": "Region",
         "country": "Country",
+        "first-registration": "First registration",
         "location": "Location",
         "checkPoint": "Check Point",
         "refugee": "Refugee",
